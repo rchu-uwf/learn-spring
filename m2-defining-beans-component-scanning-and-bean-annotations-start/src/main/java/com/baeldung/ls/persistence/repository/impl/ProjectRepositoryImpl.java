@@ -6,20 +6,24 @@ import java.util.Optional;
 
 import com.baeldung.ls.persistence.model.Project;
 import com.baeldung.ls.persistence.repository.IProjectRepository;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class ProjectRepositoryImpl implements IProjectRepository {
 
     private List<Project> projects = new ArrayList<>();
 
     public ProjectRepositoryImpl() {
+
         super();
     }
 
     @Override
     public Optional<Project> findById(Long id) {
         return projects.stream()
-            .filter(p -> p.getId() == id)
-            .findFirst();
+                .filter(p -> p.getId() == id)
+                .findFirst();
     }
 
     @Override
